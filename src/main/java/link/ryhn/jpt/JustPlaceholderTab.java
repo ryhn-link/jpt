@@ -25,6 +25,7 @@ public class JustPlaceholderTab extends JavaPlugin implements Listener {
 	@Override
 	public void onEnable() {
 		loadConfig();
+		saveConfig();
 
 		Bukkit.getScheduler().runTaskLater(this, new Runnable() {
 			// When reloading, PAPI does not load expansions in onEnable, resulting in being
@@ -40,6 +41,7 @@ public class JustPlaceholderTab extends JavaPlugin implements Listener {
 
 		getCommand("reloadtablist").setExecutor(new CommandExecutor() {
 			public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+				reloadConfig();
 				loadConfig();
 
 				for (Player p : Bukkit.getOnlinePlayers()) {
@@ -55,7 +57,6 @@ public class JustPlaceholderTab extends JavaPlugin implements Listener {
 		FileConfiguration c = getConfig();
 		c.addDefault("format", "%player_displayname%");
 		c.options().copyDefaults(true);
-		saveConfig();
 
 		tabFormat = c.getString("format");
 	}
