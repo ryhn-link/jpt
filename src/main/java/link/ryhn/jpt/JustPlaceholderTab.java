@@ -73,8 +73,6 @@ public class JustPlaceholderTab extends JavaPlugin implements Listener {
 
 	void SetTabName(Player p, String format) {
 		String s = ChatColor.translateAlternateColorCodes('&', PlaceholderAPI.setPlaceholders(p, format));
-		getLogger().info(format);
-		getLogger().info(s);
 		p.setPlayerListName(s);
 	}
 }
